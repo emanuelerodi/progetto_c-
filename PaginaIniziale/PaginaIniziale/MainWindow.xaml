@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Label Content="GameMix" HorizontalAlignment="Center" Height="61" Margin="0,23,0,0" VerticalAlignment="Top" Width="150" FontSize="30"/>
+        <Label Content="MEMORY" HorizontalAlignment="Left" Height="29" Margin="55,112,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label Content="GameMix" HorizontalAlignment="Left" Height="28" Margin="630,112,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label Content="COLPISCI LA TALPA" HorizontalAlignment="Center" Height="29" Margin="0,108,0,0" VerticalAlignment="Top" Width="118"/>
+        <Label Content="IMPICCATO" HorizontalAlignment="Left" Height="28" Margin="187,244,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="GameMix" HorizontalAlignment="Left" Height="29" Margin="526,244,0,0" VerticalAlignment="Top" Width="68"/>
 
     </Grid>
 </Window>
