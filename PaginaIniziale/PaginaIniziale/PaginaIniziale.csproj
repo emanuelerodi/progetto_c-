@@ -23,4 +23,8 @@
     <Resource Include="tris.jpg.jpg" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="images_memory\" />
+  </ItemGroup>
+
 </Project>

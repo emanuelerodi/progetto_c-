@@ -8,6 +8,7 @@
         Title="Memory" Height="450" Width="800">
     <Grid>
         <Button Content="HOME" HorizontalAlignment="Left" Margin="541,97,0,0" VerticalAlignment="Top" Height="62" Width="147" Click="Button_Click"/>
+        <Button Content="Button" HorizontalAlignment="Left" Margin="143,199,0,0" VerticalAlignment="Top" Height="112" Width="182"/>
 
     </Grid>
 </Window>
