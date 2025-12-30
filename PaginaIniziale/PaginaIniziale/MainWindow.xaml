@@ -6,26 +6,151 @@
         xmlns:local="clr-namespace:PaginaIniziale"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
+
+        <!-- SFONDO -->
         <Grid.Background>
-            <ImageBrush/>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#2196F3" Offset="0"/>
+                <GradientStop Color="#BBDEFB" Offset="1"/>
+            </LinearGradientBrush>
         </Grid.Background>
-        <Label Content="GameMix" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="150" FontSize="30"/>
-        <Label Content="MEMORY" HorizontalAlignment="Left" Height="29" Margin="55,112,0,0" VerticalAlignment="Top" Width="68"/>
-        <Label Content="INDOVINA IL NUMERO" HorizontalAlignment="Left" Height="28" Margin="630,112,0,0" VerticalAlignment="Top" Width="136"/>
-        <Label Content="COLPISCI LA TALPA" HorizontalAlignment="Center" Height="29" Margin="0,108,0,0" VerticalAlignment="Top" Width="118"/>
-        <Label Content="IMPICCATO" HorizontalAlignment="Left" Height="28" Margin="188,259,0,0" VerticalAlignment="Top" Width="76"/>
-        <Label Content="TRIS" HorizontalAlignment="Left" Height="30" Margin="524,258,0,0" VerticalAlignment="Top" Width="68"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="33,141,0,0" VerticalAlignment="Top" Width="100" Source="/memory.jpg.webp"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="174,298,0,0" VerticalAlignment="Top" Width="100" Source="/impiccato.jpg.png"/>
-        <Image HorizontalAlignment="Center" Height="95" Margin="0,150,0,0" VerticalAlignment="Top" Width="147" Source="/gioco_talpa.jpg.jpg"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="508,298,0,0" VerticalAlignment="Top" Width="100" Source="/tris.jpg.jpg"/>
-        <Image HorizontalAlignment="Left" Height="100" Margin="647,145,0,0" VerticalAlignment="Top" Width="100" Source="/indovina_numero.jpg.png"/>
-        <Button Content="GIOCA" HorizontalAlignment="Left" Margin="44,253,0,0" VerticalAlignment="Top" Height="28" Width="78" Click="Button_Click"/>
-        <Button Content="GIOCA" HorizontalAlignment="Left" Margin="658,263,0,0" VerticalAlignment="Top" Height="28" Width="78"/>
-        <Button Content="GIOCA" HorizontalAlignment="Left" Margin="519,403,0,0" VerticalAlignment="Top" Height="28" Width="78"/>
-        <Button Content="GIOCA" HorizontalAlignment="Center" Margin="0,254,0,0" VerticalAlignment="Top" Height="28" Width="78"/>
-        <Button Content="GIOCA" HorizontalAlignment="Left" Margin="187,403,0,0" VerticalAlignment="Top" Height="28" Width="78"/>
+
+
+        <!-- TITOLO -->
+        <Label Content="GameMix"
+               HorizontalAlignment="Center" 
+               VerticalAlignment="Top" 
+               Margin="0,15,0,0" 
+               FontSize="36" 
+               FontWeight="Bold">
+            <Label.Effect>
+                <DropShadowEffect Color="Black" 
+                                  BlurRadius="8" 
+                                  ShadowDepth="0" 
+                                  Opacity="0.4"/>
+            </Label.Effect>
+        </Label>
+
+        <!-- LABEL GIOCHI -->
+        <Label Content="MEMORY"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="42,110,0,0"
+               FontSize="16"
+               FontWeight="Bold"
+               FontFamily="Segoe UI"/>
+
+        <Label Content="INDOVINA IL NUMERO"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="605,110,0,0"
+               FontSize="16"
+               FontWeight="Bold"
+               FontFamily="Segoe UI"/>
+
+        <Label Content="COLPISCI LA TALPA"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="0,110,0,0"
+               FontSize="16"
+               FontWeight="Bold"
+               FontFamily="Segoe UI"/>
+
+        <Label Content="IMPICCATO"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="176,266,0,0"
+               FontSize="16"
+               FontWeight="Bold"
+               FontFamily="Segoe UI"/>
+
+        <Label Content="TRIS"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="536,266,0,0"
+               FontSize="16"
+               FontWeight="Bold"
+               FontFamily="Segoe UI"/>
+
+        <!-- IMMAGINI -->
+        <Image Source="/memory.jpg.webp"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="33,141,0,0"
+               Width="100"
+               Height="100"/>
+
+        <Image Source="/impiccato.jpg.png"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="174,298,0,0"
+               Width="100"
+               Height="100"/>
+
+        <Image Source="/gioco_talpa.jpg.jpg"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Margin="0,150,0,0"
+               Width="147"
+               Height="95"/>
+
+        <Image Source="/tris.jpg.jpg"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="508,298,0,0"
+               Width="100"
+               Height="100"/>
+
+        <Image Source="/indovina_numero.jpg.png"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Margin="647,145,0,0"
+               Width="100"
+               Height="100"/>
+
+        <!-- BOTTONI -->
+        <Button x:Name="btnMemory"
+                Content="GIOCA"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="44,253,0,0"
+                Width="78"
+                Height="28"
+                Click="Memory_Click"/>
+
+        <Button x:Name="btnNumero"
+                Content="GIOCA"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Margin="658,253,0,0"
+                Width="78"
+                Height="28"
+                Click="Numero_Click"/>
+
+        <Button x:Name="btnTris"
+                Content="GIOCA"
+                HorizontalAlignment="Left"
+                Margin="519,403,0,3"
+                Width="78"
+                Click="Tris_Click"/>
+
+        <Button x:Name="btnTalpa"
+                Content="GIOCA"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                Margin="0,253,0,0"
+                Width="78"
+                Height="28"
+                Click="Talpa_Click"/>
+
+        <Button x:Name="btnImpiccato"
+                Content="GIOCA"
+                HorizontalAlignment="Left"
+                Margin="185,403,0,3"
+                Width="78"
+                Click="Impiccato_Click"/>
 
     </Grid>
 </Window>

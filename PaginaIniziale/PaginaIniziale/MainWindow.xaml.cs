@@ -24,12 +24,12 @@ namespace PaginaIniziale
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Memory_Click(object sender, RoutedEventArgs e)
         {
-            Memory finestraMemory = new Memory(); 
+            Memory finestraMemory = new Memory();
             finestraMemory.Show();
             this.Close();
         }
+
     }
 }
