@@ -7,12 +7,25 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="GameMix" HorizontalAlignment="Center" Height="61" Margin="0,23,0,0" VerticalAlignment="Top" Width="150" FontSize="30"/>
+        <Grid.Background>
+            <ImageBrush/>
+        </Grid.Background>
+        <Label Content="GameMix" HorizontalAlignment="Center" Height="61" VerticalAlignment="Top" Width="150" FontSize="30"/>
         <Label Content="MEMORY" HorizontalAlignment="Left" Height="29" Margin="55,112,0,0" VerticalAlignment="Top" Width="68"/>
         <Label Content="INDOVINA IL NUMERO" HorizontalAlignment="Left" Height="28" Margin="630,112,0,0" VerticalAlignment="Top" Width="136"/>
         <Label Content="COLPISCI LA TALPA" HorizontalAlignment="Center" Height="29" Margin="0,108,0,0" VerticalAlignment="Top" Width="118"/>
-        <Label Content="IMPICCATO" HorizontalAlignment="Left" Height="28" Margin="187,244,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="TRIS" HorizontalAlignment="Left" Height="29" Margin="526,244,0,0" VerticalAlignment="Top" Width="68"/>
+        <Label Content="IMPICCATO" HorizontalAlignment="Left" Height="28" Margin="188,259,0,0" VerticalAlignment="Top" Width="76"/>
+        <Label Content="TRIS" HorizontalAlignment="Left" Height="30" Margin="524,258,0,0" VerticalAlignment="Top" Width="68"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="33,141,0,0" VerticalAlignment="Top" Width="100" Source="/memory.jpg.webp"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="174,298,0,0" VerticalAlignment="Top" Width="100" Source="/impiccato.jpg.png"/>
+        <Image HorizontalAlignment="Center" Height="95" Margin="0,150,0,0" VerticalAlignment="Top" Width="147" Source="/gioco_talpa.jpg.jpg"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="508,298,0,0" VerticalAlignment="Top" Width="100" Source="/tris.jpg.jpg"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="647,145,0,0" VerticalAlignment="Top" Width="100" Source="/indovina_numero.jpg.png"/>
+        <Button Content="GIOCA" HorizontalAlignment="Left" Margin="44,253,0,0" VerticalAlignment="Top" Height="28" Width="78" Click="Button_Click"/>
+        <Button Content="GIOCA" HorizontalAlignment="Left" Margin="658,263,0,0" VerticalAlignment="Top" Height="28" Width="78"/>
+        <Button Content="GIOCA" HorizontalAlignment="Left" Margin="519,403,0,0" VerticalAlignment="Top" Height="28" Width="78"/>
+        <Button Content="GIOCA" HorizontalAlignment="Center" Margin="0,254,0,0" VerticalAlignment="Top" Height="28" Width="78"/>
+        <Button Content="GIOCA" HorizontalAlignment="Left" Margin="187,403,0,0" VerticalAlignment="Top" Height="28" Width="78"/>
 
     </Grid>
 </Window>

@@ -7,4 +7,20 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="gioco_talpa.jpg.jpg" />
+    <None Remove="impiccato.jpg.png" />
+    <None Remove="indovina_numero.jpg.png" />
+    <None Remove="memory.jpg.webp" />
+    <None Remove="tris.jpg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="gioco_talpa.jpg.jpg" />
+    <Resource Include="impiccato.jpg.png" />
+    <Resource Include="indovina_numero.jpg.png" />
+    <Resource Include="memory.jpg.webp" />
+    <Resource Include="tris.jpg.jpg" />
+  </ItemGroup>
+
 </Project>

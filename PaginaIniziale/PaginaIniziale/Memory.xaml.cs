@@ -10,25 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PaginaIniziale
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Logica di interazione per Memory.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class Memory : Window
     {
-        public MainWindow()
+        public Memory()
         {
             InitializeComponent();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Memory finestraMemory = new Memory(); 
-            finestraMemory.Show();
+            MainWindow home = new MainWindow(); 
+            home.Show(); 
+
             this.Close();
         }
     }
