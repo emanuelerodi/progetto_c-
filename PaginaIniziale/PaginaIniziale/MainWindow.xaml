@@ -22,7 +22,6 @@
         <Label Content="GameMix"
                HorizontalAlignment="Center" 
                VerticalAlignment="Top" 
-               Margin="0,15,0,0" 
                FontSize="36" 
                FontWeight="Bold">
             <Label.Effect>
@@ -37,7 +36,7 @@
         <Label Content="MEMORY"
                HorizontalAlignment="Left"
                VerticalAlignment="Top"
-               Margin="42,110,0,0"
+               Margin="44,72,0,0"
                FontSize="16"
                FontWeight="Bold"
                FontFamily="Segoe UI"/>
@@ -45,7 +44,7 @@
         <Label Content="INDOVINA IL NUMERO"
                HorizontalAlignment="Left"
                VerticalAlignment="Top"
-               Margin="605,110,0,0"
+               Margin="589,72,0,0"
                FontSize="16"
                FontWeight="Bold"
                FontFamily="Segoe UI"/>
@@ -53,7 +52,7 @@
         <Label Content="COLPISCI LA TALPA"
                HorizontalAlignment="Center"
                VerticalAlignment="Top"
-               Margin="0,110,0,0"
+               Margin="0,72,0,0"
                FontSize="16"
                FontWeight="Bold"
                FontFamily="Segoe UI"/>
@@ -61,7 +60,7 @@
         <Label Content="IMPICCATO"
                HorizontalAlignment="Left"
                VerticalAlignment="Top"
-               Margin="176,266,0,0"
+               Margin="196,232,0,0"
                FontSize="16"
                FontWeight="Bold"
                FontFamily="Segoe UI"/>
@@ -69,7 +68,7 @@
         <Label Content="TRIS"
                HorizontalAlignment="Left"
                VerticalAlignment="Top"
-               Margin="536,266,0,0"
+               Margin="536,232,0,0"
                FontSize="16"
                FontWeight="Bold"
                FontFamily="Segoe UI"/>
@@ -78,35 +77,31 @@
         <Image Source="/memory.jpg.webp"
                HorizontalAlignment="Left"
                VerticalAlignment="Top"
-               Margin="33,141,0,0"
+               Margin="36,108,0,0"
                Width="100"
                Height="100"/>
 
         <Image Source="/impiccato.jpg.png"
                HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               Margin="174,298,0,0"
-               Width="100"
-               Height="100"/>
+               Margin="192,268,0,0"
+               Width="100" Height="100" VerticalAlignment="Top"/>
 
         <Image Source="/gioco_talpa.jpg.jpg"
                HorizontalAlignment="Center"
                VerticalAlignment="Top"
-               Margin="0,150,0,0"
-               Width="147"
+               Margin="0,108,0,0"
+               Width="148"
                Height="95"/>
 
         <Image Source="/tris.jpg.jpg"
                HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               Margin="508,298,0,0"
-               Width="100"
-               Height="100"/>
+               Margin="508,268,0,0"
+               Width="100" Height="100" VerticalAlignment="Top"/>
 
         <Image Source="/indovina_numero.jpg.png"
                HorizontalAlignment="Left"
                VerticalAlignment="Top"
-               Margin="647,145,0,0"
+               Margin="631,108,0,0"
                Width="100"
                Height="100"/>
 
@@ -115,7 +110,7 @@
                 Content="GIOCA"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="44,253,0,0"
+                Margin="47,216,0,0"
                 Width="78"
                 Height="28"
                 Click="Memory_Click"/>
@@ -124,33 +119,29 @@
                 Content="GIOCA"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="658,253,0,0"
+                Margin="642,213,0,0"
                 Width="78"
-                Height="28"
-                Click="Numero_Click"/>
+                Height="28"/>
 
         <Button x:Name="btnTris"
                 Content="GIOCA"
                 HorizontalAlignment="Left"
-                Margin="519,403,0,3"
-                Width="78"
-                Click="Tris_Click"/>
+                Margin="519,377,0,0"
+                Width="78" Height="28" VerticalAlignment="Top"/>
 
         <Button x:Name="btnTalpa"
                 Content="GIOCA"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Margin="0,253,0,0"
+                Margin="0,207,0,0"
                 Width="78"
-                Height="28"
-                Click="Talpa_Click"/>
+                Height="28"/>
 
         <Button x:Name="btnImpiccato"
                 Content="GIOCA"
                 HorizontalAlignment="Left"
-                Margin="185,403,0,3"
-                Width="78"
-                Click="Impiccato_Click"/>
+                Margin="203,377,0,0"
+                Width="78" Height="28" VerticalAlignment="Top"/>
 
     </Grid>
 </Window>
