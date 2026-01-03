@@ -9,6 +9,15 @@
 
   <ItemGroup>
     <None Remove="gioco_talpa.jpg.jpg" />
+    <None Remove="Immagini_memory\alieno.png" />
+    <None Remove="Immagini_memory\astronauta.png" />
+    <None Remove="Immagini_memory\carta_coperta.png" />
+    <None Remove="Immagini_memory\luna.png" />
+    <None Remove="Immagini_memory\navicella.png" />
+    <None Remove="Immagini_memory\razzo.png" />
+    <None Remove="Immagini_memory\satellite.png" />
+    <None Remove="Immagini_memory\sole.png" />
+    <None Remove="Immagini_memory\terra.png" />
     <None Remove="impiccato.jpg.png" />
     <None Remove="indovina_numero.jpg.png" />
     <None Remove="memory.jpg.webp" />
@@ -17,6 +26,33 @@
 
   <ItemGroup>
     <Resource Include="gioco_talpa.jpg.jpg" />
+    <Resource Include="Immagini_memory\alieno.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Immagini_memory\astronauta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Immagini_memory\carta_coperta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Immagini_memory\luna.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Immagini_memory\navicella.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Immagini_memory\razzo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Immagini_memory\satellite.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Immagini_memory\sole.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Immagini_memory\terra.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="impiccato.jpg.png" />
     <Resource Include="indovina_numero.jpg.png" />
     <Resource Include="memory.jpg.webp" />

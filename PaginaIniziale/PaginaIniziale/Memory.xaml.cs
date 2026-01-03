@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Interop;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
@@ -23,11 +24,11 @@ namespace PaginaIniziale
 
         private DispatcherTimer timer; 
         private int secondi = 0;
-        private List<BitmapImage> carte;
-        private BitmapImage immagine_coperta;
+        private List<string> immagini;
         private Button primaCarta = null; 
         private Button secondaCarta = null; 
         private int coppieTrovate = 0;
+        private bool bloccoClick = false;
         public Memory()
         {
             InitializeComponent();
@@ -37,36 +38,32 @@ namespace PaginaIniziale
 
         private void InizializzaGioco()
         {
-            carte = new List<BitmapImage>
-            {
-                new BitmapImage(new Uri("Immagini_memory/alieno.png")),
-                new BitmapImage(new Uri("Immagini_memory/alieno.png")),
-                
-                new BitmapImage(new Uri("Immagini_memory/astronauta.png")),
-                new BitmapImage(new Uri("Immagini_memory/astronauta.png")),
-                
-                new BitmapImage(new Uri("Immagini_memory/luna.png")),
-                new BitmapImage(new Uri("Immagini_memory/luna.png")),
 
-                new BitmapImage(new Uri("Immagini_memory/navicella.png")),
-                new BitmapImage(new Uri("Immagini_memory/navicella.png")),
+            CardGrid.Children.Clear();
+            coppieTrovate = 0;
+            secondi = 0;
 
-                new BitmapImage(new Uri("Immagini_memory/razzo.png")),
-                new BitmapImage(new Uri("Immagini_memory/razzo.png")),
-                
-                new BitmapImage(new Uri("Immagini_memory/satellite.png")),
-                new BitmapImage(new Uri("Immagini_memory/satellite.png")),
-
-                new BitmapImage(new Uri("Immagini_memory/sole.png")),
-                new BitmapImage(new Uri("Immagini_memory/sole.png")),
-
-                new BitmapImage(new Uri("Immagini_memory/terra.png")),
-                new BitmapImage(new Uri("Immagini_memory/terra.png")),
+            immagini = new List<string>{
+                "alieno.png","astronauta.png","luna.png","navicella.png",
+                "razzo.png","satellite.png","sole.png","terra.png"
             };
-            
-            immagine_coperta= new BitmapImage(new Uri("Immagini_memory/coperta.png"));
 
+            immagini = immagini.Concat(immagini).ToList(); // doppie
+
+            Random rnd = new Random();
+            immagini = immagini.OrderBy(x => rnd.Next()).ToList(); // mischia
+
+            foreach (var img in immagini)
+            {
+                Button btn = new Button();
+                btn.Tag = img;
+                btn.Click += Carta_Click;
+                btn.Content = CreaImmagine("carta_coperta.png");
+                CardGrid.Children.Add(btn);
+            }
         }
+
+        
         private void Home_Click(object sender, RoutedEventArgs e)
         {
             MainWindow home = new MainWindow(); 
@@ -96,6 +93,59 @@ namespace PaginaIniziale
             secondi++;
             lblTimer.Content = $"Tempo: {secondi} s";
         }
+
+        private Image CreaImmagine(string nome)
+        {
+            return new Image
+            {
+                Source = new BitmapImage(new Uri($"Immagini_memory/{nome}", UriKind.Relative)),
+                Stretch = System.Windows.Media.Stretch.Uniform
+            };
+        }
+
+        private async void Carta_Click(object sender, RoutedEventArgs e)
+        {
+            if (bloccoClick) return;
+
+            Button carta = sender as Button;
+
+            if (carta.Content is Image img && img.Source.ToString().Contains(carta.Tag.ToString()))
+                return;
+
+            carta.Content = CreaImmagine(carta.Tag.ToString());
+
+            if (primaCarta == null)
+            {
+                primaCarta = carta;
+                return;
+            }
+
+            secondaCarta = carta;
+            bloccoClick = true;
+
+            if (primaCarta.Tag.ToString() == secondaCarta.Tag.ToString())
+            {
+                coppieTrovate++;
+                primaCarta = null;
+                secondaCarta = null;
+                bloccoClick = false;
+
+                if (coppieTrovate == 8)
+                    MessageBox.Show($"Hai vinto in {secondi} secondi!");
+            }
+            else
+            {
+                await Task.Delay(800);
+
+                primaCarta.Content = CreaImmagine("carta_coperta.png");
+                secondaCarta.Content = CreaImmagine("carta_coperta.png");
+
+                primaCarta = null;
+                secondaCarta = null;
+                bloccoClick = false;
+            }
+        }
+
 
     }
 }
