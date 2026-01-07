@@ -31,6 +31,11 @@ namespace PaginaIniziale
             this.Close();
         }
 
-        
+        private void btnNumero_Click(object sender, RoutedEventArgs e)
+        {
+            IndovinaNumero indovinaNumero = new IndovinaNumero();
+            indovinaNumero.Show();
+            this.Close();
+        }
     }
 }
