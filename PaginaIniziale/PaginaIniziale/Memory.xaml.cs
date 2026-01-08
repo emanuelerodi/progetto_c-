@@ -130,7 +130,12 @@ namespace PaginaIniziale
                 bloccoClick = false;
 
                 if (coppieTrovate == 8)
+                {
+                    timer.Stop();
                     MessageBox.Show($"Hai vinto in {secondi} secondi!");
+                    
+                }
+                    
             }
             else
             {

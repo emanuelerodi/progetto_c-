@@ -31,5 +31,6 @@
                 HorizontalAlignment="Left" Margin="436,249,0,0"
                 VerticalAlignment="Top" Height="39" Width="107"
                 Click="BtnRicomincia_Click"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="221,10,0,0" VerticalAlignment="Top" Height="36" Width="281"/>
     </Grid>
 </Window>
