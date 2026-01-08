@@ -31,6 +31,11 @@ namespace PaginaIniziale
             this.Close();
         }
 
-        
+        private void btnImpiccato_Click(object sender, RoutedEventArgs e)
+        {
+            Impiccato finestraImpiccato = new Impiccato();
+            finestraImpiccato.Show();
+            this.Close();
+        }
     }
 }

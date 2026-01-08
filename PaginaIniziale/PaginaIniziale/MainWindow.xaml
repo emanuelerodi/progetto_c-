@@ -141,7 +141,7 @@
                 Content="GIOCA"
                 HorizontalAlignment="Left"
                 Margin="203,377,0,0"
-                Width="78" Height="28" VerticalAlignment="Top"/>
+                Width="78" Height="28" VerticalAlignment="Top" Click="btnImpiccato_Click"/>
 
     </Grid>
 </Window>
