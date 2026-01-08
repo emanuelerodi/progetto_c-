@@ -1,0 +1,35 @@
+﻿<Window x:Class="PaginaIniziale.IndovinaNumero"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PaginaIniziale"
+        mc:Ignorable="d"
+        Title="IndovinaNumero" Height="450" Width="800">
+    <Grid>
+        <Button Content="HOME" HorizontalAlignment="Left" Margin="631,73,0,0" VerticalAlignment="Top" Height="47" Width="106" Click="Button_Click"/>
+
+        <TextBox x:Name="InputNumero"
+                 HorizontalAlignment="Left" Margin="261,120,0,0"
+                 TextWrapping="Wrap" VerticalAlignment="Top"
+                 Width="122" Height="27"/>
+
+        <Button x:Name="BtnConferma"
+                Content="CONFERMA"
+                HorizontalAlignment="Left" Margin="432,114,0,0"
+                VerticalAlignment="Top" Height="33" Width="99"
+                Click="BtnConferma_Click"/>
+
+        <TextBlock x:Name="TxtMessaggi"
+                   HorizontalAlignment="Left" Margin="261,182,0,0"
+                   TextWrapping="Wrap" VerticalAlignment="Top"
+                   Height="60" Width="270"
+                   Text=""/>
+
+        <Button x:Name="BtnRicomincia"
+                Content="RICOMINCIA"
+                HorizontalAlignment="Left" Margin="436,249,0,0"
+                VerticalAlignment="Top" Height="39" Width="107"
+                Click="BtnRicomincia_Click"/>
+    </Grid>
+</Window>

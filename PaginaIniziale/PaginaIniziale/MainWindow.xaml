@@ -121,7 +121,7 @@
                 VerticalAlignment="Top"
                 Margin="642,213,0,0"
                 Width="78"
-                Height="28"/>
+                Height="28" Click="btnNumero_Click"/>
 
         <Button x:Name="btnTris"
                 Content="GIOCA"
