@@ -20,15 +20,16 @@ namespace PaginaIniziale
         {
             InitializeComponent();
 
-            // MOSTRA IL PERCORSO REALE DOVE WPF CERCA L'IMMAGINE
-            MessageBox.Show(System.IO.Path.GetFullPath("Immagini_impiccato/stato0.png"));
+            // Mostra il percorso reale dove cerca le immagini
+            string testPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Immagini_impiccato", "stato0.png");
+            MessageBox.Show("Percorso immagine:\n" + testPath);
 
             InizializzaGioco();
         }
 
         private List<string> CaricaParoleDaFile()
         {
-            string path = "parole.txt";
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "parole.txt");
             return System.IO.File.ReadAllLines(path)
                                  .Select(p => p.Trim().ToUpper())
                                  .Where(p => p.Length > 0)
@@ -42,7 +43,9 @@ namespace PaginaIniziale
             errori = 0;
             lettereUsate.Clear();
 
-            imgImpiccato.Source = new BitmapImage(new Uri("Immagini_impiccato/stato0.png", UriKind.Relative));
+            // Carica immagine stato0 con percorso assoluto
+            string imgPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Immagini_impiccato", "stato0.png");
+            imgImpiccato.Source = new BitmapImage(new Uri(imgPath));
 
             parolaSegreta = listaParole[rnd.Next(listaParole.Count)];
             statoParola = parolaSegreta.Select(_ => '_').ToArray();
@@ -105,7 +108,9 @@ namespace PaginaIniziale
 
                 txtSbagli.Text = $"Sbagliate: {string.Join(" ", lettereUsate.Where(l => !parolaSegreta.Contains(l)))}";
 
-                imgImpiccato.Source = new BitmapImage(new Uri($"Immagini_impiccato/stato{errori}.png", UriKind.Relative));
+                // Carica immagine errore con percorso assoluto
+                string imgPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Immagini_impiccato", $"stato{errori}.png");
+                imgImpiccato.Source = new BitmapImage(new Uri(imgPath));
 
                 if (errori >= 6)
                 {
