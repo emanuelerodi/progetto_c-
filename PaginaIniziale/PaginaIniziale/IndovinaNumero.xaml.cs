@@ -66,17 +66,17 @@ namespace PaginaIniziale
             {
                 TxtMessaggi.Text = vittoria[rnd.Next(vittoria.Length)] +
                                    $"\nHai indovinato in {tentativi} tentativi!";
-                TxtMessaggi.Foreground = Brushes.LimeGreen;
+                TxtMessaggi.Foreground = Brushes.Black;
             }
             else if (numeroUtente > numeroSegreto)
             {
                 TxtMessaggi.Text = troppoAlto[rnd.Next(troppoAlto.Length)];
-                TxtMessaggi.Foreground = Brushes.Red;
+                TxtMessaggi.Foreground = Brushes.Black;
             }
             else
             {
                 TxtMessaggi.Text = troppoBasso[rnd.Next(troppoBasso.Length)];
-                TxtMessaggi.Foreground = Brushes.Cyan;
+                TxtMessaggi.Foreground = Brushes.Black;
             }
 
             InputNumero.Clear();
