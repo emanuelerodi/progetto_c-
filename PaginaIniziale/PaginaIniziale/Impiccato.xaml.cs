@@ -11,53 +11,50 @@ namespace PaginaIniziale
     {
         private string parolaSegreta;
         private char[] statoParola;
-        private int errori = 0;
-        private List<char> lettereUsate = new List<char>();
+        private int errori;
+        private readonly List<char> lettereUsate = new List<char>();
         private List<string> listaParole;
+        private static readonly Random rnd = new Random();
 
         public Impiccato()
         {
             InitializeComponent();
+
+            // MOSTRA IL PERCORSO REALE DOVE WPF CERCA L'IMMAGINE
+            MessageBox.Show(System.IO.Path.GetFullPath("Immagini_impiccato/stato0.png"));
+
             InizializzaGioco();
         }
 
-        // Carica parole dal file parole.txt
         private List<string> CaricaParoleDaFile()
         {
-            try
-            {
-                string path = "parole.txt";
-                return System.IO.File.ReadAllLines(path)
-                                     .Select(p => p.Trim().ToUpper())
-                                     .Where(p => p.Length > 0)
-                                     .ToList();
-            }
-            catch
-            {
-                MessageBox.Show("Errore: impossibile leggere parole.txt");
-                return new List<string> { "ERRORE" };
-            }
+            string path = "parole.txt";
+            return System.IO.File.ReadAllLines(path)
+                                 .Select(p => p.Trim().ToUpper())
+                                 .Where(p => p.Length > 0)
+                                 .ToList();
         }
 
         private void InizializzaGioco()
         {
-            // Carica parole
             listaParole = CaricaParoleDaFile();
 
-            // Reset
             errori = 0;
             lettereUsate.Clear();
+
             imgImpiccato.Source = new BitmapImage(new Uri("Immagini_impiccato/stato0.png", UriKind.Relative));
 
-            // Scegli parola casuale
-            Random rnd = new Random();
             parolaSegreta = listaParole[rnd.Next(listaParole.Count)];
-            statoParola = parolaSegreta.Select(c => '_').ToArray();
+            statoParola = parolaSegreta.Select(_ => '_').ToArray();
 
             txtParola.Text = string.Join(" ", statoParola);
             txtSbagli.Text = "Sbagliate: ";
 
-            // Genera bottoni A-Z
+            GeneraBottoniLettere();
+        }
+
+        private void GeneraBottoniLettere()
+        {
             GrigliaLettere.Children.Clear();
 
             for (char c = 'A'; c <= 'Z'; c++)
@@ -86,7 +83,6 @@ namespace PaginaIniziale
 
             lettereUsate.Add(lettera);
 
-            // Se la lettera è nella parola
             if (parolaSegreta.Contains(lettera))
             {
                 for (int i = 0; i < parolaSegreta.Length; i++)
@@ -97,7 +93,6 @@ namespace PaginaIniziale
 
                 txtParola.Text = string.Join(" ", statoParola);
 
-                // Vittoria
                 if (!statoParola.Contains('_'))
                 {
                     MessageBox.Show("Hai vinto!");
@@ -106,15 +101,13 @@ namespace PaginaIniziale
             }
             else
             {
-                // Errore
                 errori++;
 
                 txtSbagli.Text = $"Sbagliate: {string.Join(" ", lettereUsate.Where(l => !parolaSegreta.Contains(l)))}";
 
                 imgImpiccato.Source = new BitmapImage(new Uri($"Immagini_impiccato/stato{errori}.png", UriKind.Relative));
 
-                // Sconfitta
-                if (errori == 6)
+                if (errori >= 6)
                 {
                     MessageBox.Show($"Hai perso! La parola era: {parolaSegreta}");
                     DisabilitaTutteLettere();
@@ -132,7 +125,7 @@ namespace PaginaIniziale
         {
             MainWindow home = new MainWindow();
             home.Show();
-            this.Close();
+            Close();
         }
 
         private void Ricomincia_Click(object sender, RoutedEventArgs e)

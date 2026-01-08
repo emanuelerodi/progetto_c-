@@ -21,11 +21,11 @@
 
         <!-- Immagine dell'impiccato -->
         <Image x:Name="imgImpiccato"
-               Width="200"
-               Height="200"
+               Width="42"
+               Height="57"
                HorizontalAlignment="Left"
-               VerticalAlignment="Center"
-               Margin="20,0,0,0"
+               VerticalAlignment="Top"
+               Margin="39,171,0,0"
                Source="Immagini_impiccato/stato0.png"/>
 
         <!-- Parola da indovinare -->
@@ -34,8 +34,7 @@
                    FontWeight="Bold"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
-                   Margin="0,80,0,0"
-                   Text=""/>
+                   Margin="0,80,0,0"/>
 
         <!-- Lettere sbagliate -->
         <TextBlock x:Name="txtSbagli"
@@ -51,8 +50,6 @@
                      Columns="9"
                      HorizontalAlignment="Center"
                      VerticalAlignment="Bottom"
-                     Margin="0,0,0,20">
-        </UniformGrid>
-
+                     Margin="0,0,0,20"/>
     </Grid>
 </Window>
