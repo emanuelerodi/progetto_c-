@@ -85,7 +85,6 @@ namespace PaginaIniziale
             timer = new DispatcherTimer();
             timer.Interval = TimeSpan.FromSeconds(1);
             timer.Tick += Timer_Tick;
-            timer.Start();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -146,6 +145,13 @@ namespace PaginaIniziale
             }
         }
 
-
+        private void start_Click(object sender, RoutedEventArgs e)
+        {
+            secondi = 0;
+            lblTimer.Content = "Tempo: 0 s";
+            timer.Stop();
+            timer.Start();
+            InizializzaGioco();
+        }
     }
 }

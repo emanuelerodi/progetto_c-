@@ -23,19 +23,15 @@ namespace PaginaIniziale
         // Frasi dinamiche
         private string[] troppoAlto = new string[]
         {
-            "Troppo alto! Il numero non è un grattacielo!",
             "Eh no, sei andato troppo su!",
-            "Sali meno, astronauta!"
         };
 
         private string[] troppoBasso = new string[]
         {
             "Troppo basso! Non scavare così tanto!",
-            "Un po’ più su, coraggio!",
-            "Stai rasoterra, prova a salire!"
         };
 
-        private string[] complimenti = new string[]
+        private string[] vittoria = new string[]
         {
             "🎉 BOOM! Hai indovinato!",
             "👏 Grande! Numero centrato!",
@@ -70,7 +66,7 @@ namespace PaginaIniziale
 
             if (numeroUtente == numeroSegreto)
             {
-                TxtMessaggi.Text = complimenti[rnd.Next(complimenti.Length)] +
+                TxtMessaggi.Text = vittoria[rnd.Next(vittoria.Length)] +
                                    $"\nHai indovinato in {tentativi} tentativi!";
                 TxtMessaggi.Foreground = Brushes.LimeGreen;
             }
