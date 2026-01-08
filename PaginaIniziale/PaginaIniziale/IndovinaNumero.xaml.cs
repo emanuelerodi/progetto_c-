@@ -23,19 +23,17 @@ namespace PaginaIniziale
         // Frasi dinamiche
         private string[] troppoAlto = new string[]
         {
-            "Eh no, sei andato troppo su!",
+            "il numero è troppo alto!" + "\n" + "ritenta e sarai più fortunato"
         };
 
         private string[] troppoBasso = new string[]
         {
-            "Troppo basso! Non scavare così tanto!",
+            "il numero è troppo basso!" + "\n" + "ritenta e sarai più fortunato"
         };
 
         private string[] vittoria = new string[]
         {
-            "🎉 BOOM! Hai indovinato!",
-            "👏 Grande! Numero centrato!",
-            "🔥 Perfetto! Hai letto nella mia mente!"
+            "Hai indovinato!",
         };
 
         public IndovinaNumero()
