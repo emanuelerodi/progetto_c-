@@ -127,7 +127,7 @@
                 Content="GIOCA"
                 HorizontalAlignment="Left"
                 Margin="519,377,0,0"
-                Width="78" Height="28" VerticalAlignment="Top"/>
+                Width="78" Height="28" VerticalAlignment="Top" Click="btnTris_Click"/>
 
         <Button x:Name="btnTalpa"
                 Content="GIOCA"
@@ -135,7 +135,7 @@
                 VerticalAlignment="Top"
                 Margin="0,207,0,0"
                 Width="78"
-                Height="28"/>
+                Height="28" Click="btnTalpa_Click"/>
 
         <Button x:Name="btnImpiccato"
                 Content="GIOCA"

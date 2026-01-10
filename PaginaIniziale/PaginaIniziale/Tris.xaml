@@ -1,0 +1,36 @@
+﻿<Window x:Class="PaginaIniziale.Tris"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Tris" Height="450" Width="400">
+
+    <Grid Background="#F0F0F0" Margin="20">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Titolo -->
+        <TextBlock Text="TRIS"
+                   FontSize="32"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,20"/>
+
+        <!-- Griglia 3x3 -->
+        <UniformGrid x:Name="GrigliaTris"
+                     Grid.Row="1"
+                     Rows="3"
+                     Columns="3"
+                     Margin="0,10,0,10"/>
+
+        <!-- Pulsante Ricomincia -->
+        <Button Content="RICOMINCIA"
+                Grid.Row="2"
+                Width="150"
+                Height="40"
+                HorizontalAlignment="Center"
+                Click="Ricomincia_Click"/>
+    </Grid>
+</Window>

@@ -45,5 +45,18 @@ namespace PaginaIniziale
 
             this.Close();
         }
+        private void btnTris_Click(object sender, RoutedEventArgs e)
+        {
+            Tris tris = new Tris();
+            tris.Show();
+            this.Close();
+        }
+
+        private void btnTalpa_Click(object sender, RoutedEventArgs e)
+        {
+            Talpa talpa = new Talpa();
+            talpa.Show();
+            this.Close();
+        }
     }
 }

@@ -12,130 +12,103 @@ namespace PaginaIniziale
         private string parolaSegreta;
         private char[] statoParola;
         private int errori;
-        private readonly List<char> lettereUsate = new List<char>();
-        private List<string> listaParole;
+        private List<string> parole;
         private static readonly Random rnd = new Random();
 
         public Impiccato()
         {
             InitializeComponent();
-
-            // Mostra il percorso reale dove cerca le immagini
-            string testPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Immagini_impiccato", "stato0.png");
-            MessageBox.Show("Percorso immagine:\n" + testPath);
-
             InizializzaGioco();
-        }
-
-        private List<string> CaricaParoleDaFile()
-        {
-            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "parole.txt");
-            return System.IO.File.ReadAllLines(path)
-                                 .Select(p => p.Trim().ToUpper())
-                                 .Where(p => p.Length > 0)
-                                 .ToList();
         }
 
         private void InizializzaGioco()
         {
-            listaParole = CaricaParoleDaFile();
+            // Carica parole
+            string path = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "parole.txt");
+            parole = System.IO.File.ReadAllLines(path).ToList();
 
+            // Reset
             errori = 0;
-            lettereUsate.Clear();
-
-            // Carica immagine stato0 con percorso assoluto
-            string imgPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Immagini_impiccato", "stato0.png");
-            imgImpiccato.Source = new BitmapImage(new Uri(imgPath));
-
-            parolaSegreta = listaParole[rnd.Next(listaParole.Count)];
+            parolaSegreta = parole[rnd.Next(parole.Count)];
             statoParola = parolaSegreta.Select(_ => '_').ToArray();
-
             txtParola.Text = string.Join(" ", statoParola);
             txtSbagli.Text = "Sbagliate: ";
 
-            GeneraBottoniLettere();
-        }
+            // Immagine iniziale
+            AggiornaImmagine();
 
-        private void GeneraBottoniLettere()
-        {
+            // Bottoni lettere
             GrigliaLettere.Children.Clear();
-
             for (char c = 'A'; c <= 'Z'; c++)
             {
-                Button btn = new Button
+                Button b = new Button
                 {
                     Content = c.ToString(),
                     Margin = new Thickness(5),
                     FontSize = 18
                 };
-
-                btn.Click += Lettera_Click;
-                GrigliaLettere.Children.Add(btn);
+                b.Click += Lettera_Click;
+                GrigliaLettere.Children.Add(b);
             }
         }
 
         private void Lettera_Click(object sender, RoutedEventArgs e)
         {
-            Button btn = sender as Button;
+            Button btn = (Button)sender;
             char lettera = btn.Content.ToString()[0];
-
             btn.IsEnabled = false;
-
-            if (lettereUsate.Contains(lettera))
-                return;
-
-            lettereUsate.Add(lettera);
 
             if (parolaSegreta.Contains(lettera))
             {
+                // Aggiorna parola
                 for (int i = 0; i < parolaSegreta.Length; i++)
-                {
                     if (parolaSegreta[i] == lettera)
                         statoParola[i] = lettera;
-                }
 
                 txtParola.Text = string.Join(" ", statoParola);
 
                 if (!statoParola.Contains('_'))
                 {
                     MessageBox.Show("Hai vinto!");
-                    DisabilitaTutteLettere();
+                    DisabilitaLettere();
                 }
             }
             else
             {
                 errori++;
+                txtSbagli.Text += lettera + " ";
+                AggiornaImmagine();
 
-                txtSbagli.Text = $"Sbagliate: {string.Join(" ", lettereUsate.Where(l => !parolaSegreta.Contains(l)))}";
-
-                // Carica immagine errore con percorso assoluto
-                string imgPath = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Immagini_impiccato", $"stato{errori}.png");
-                imgImpiccato.Source = new BitmapImage(new Uri(imgPath));
-
-                if (errori >= 6)
+                if (errori == 6)
                 {
                     MessageBox.Show($"Hai perso! La parola era: {parolaSegreta}");
-                    DisabilitaTutteLettere();
+                    DisabilitaLettere();
                 }
             }
         }
 
-        private void DisabilitaTutteLettere()
+        private void AggiornaImmagine()
+        {
+            string img = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Immagini_impiccato", $"stato{errori}.png");
+            imgImpiccato.Source = new BitmapImage(new Uri(img));
+        }
+
+        private void DisabilitaLettere()
         {
             foreach (Button b in GrigliaLettere.Children)
                 b.IsEnabled = false;
         }
 
-        private void Home_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow home = new MainWindow();
-            home.Show();
-            Close();
-        }
-
         private void Ricomincia_Click(object sender, RoutedEventArgs e)
         {
             InizializzaGioco();
+        }
+
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow finestraIniziale = new MainWindow();
+            finestraIniziale.Show();
+            this.Close();
         }
     }
 }

@@ -21,11 +21,11 @@
 
         <!-- Immagine dell'impiccato -->
         <Image x:Name="imgImpiccato"
-               Width="42"
-               Height="57"
+               Width="116"
+               Height="101"
                HorizontalAlignment="Left"
                VerticalAlignment="Top"
-               Margin="39,171,0,0"
+               Margin="60,153,0,0"
                Source="Immagini_impiccato/stato0.png"/>
 
         <!-- Parola da indovinare -->
