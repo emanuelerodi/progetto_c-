@@ -30,7 +30,6 @@
                 Grid.Row="2"
                 Width="150"
                 Height="40"
-                HorizontalAlignment="Center"
-                Click="Ricomincia_Click"/>
+                HorizontalAlignment="Center"/>
     </Grid>
 </Window>
