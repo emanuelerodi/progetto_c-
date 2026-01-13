@@ -76,8 +76,7 @@ namespace PaginaIniziale
         {
             secondi = 0; 
             lblTimer.Content = "Tempo: 0 s"; 
-            timer.Stop(); 
-            timer.Start(); 
+            timer.Stop();  
             InizializzaGioco();
         }
         private void InizializzaTimer()
