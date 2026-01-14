@@ -13,32 +13,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using System.IO;
 
 namespace PaginaIniziale
 {
-    /// <summary>
-    /// Logica di interazione per Memory.xaml
-    /// </summary>
     public partial class Memory : Window
     {
-
-        private DispatcherTimer timer; 
+        private DispatcherTimer timer;
         private int secondi = 0;
         private List<string> immagini;
-        private Button primaCarta = null; 
-        private Button secondaCarta = null; 
+        private Button primaCarta = null;
+        private Button secondaCarta = null;
         private int coppieTrovate = 0;
         private bool bloccoClick = false;
+
+        private string pathBestTime = "best_time.txt";
+        private int bestTime = int.MaxValue;
+
         public Memory()
         {
             InitializeComponent();
+            CaricaBestTime();
             InizializzaTimer();
             InizializzaGioco();
         }
 
         private void InizializzaGioco()
         {
-
             CardGrid.Children.Clear();
             coppieTrovate = 0;
             secondi = 0;
@@ -48,10 +49,10 @@ namespace PaginaIniziale
                 "razzo.png","satellite.png","sole.png","terra.png"
             };
 
-            immagini = immagini.Concat(immagini).ToList(); // doppie
+            immagini = immagini.Concat(immagini).ToList();
 
             Random rnd = new Random();
-            immagini = immagini.OrderBy(x => rnd.Next()).ToList(); // mischia
+            immagini = immagini.OrderBy(x => rnd.Next()).ToList();
 
             foreach (var img in immagini)
             {
@@ -63,22 +64,21 @@ namespace PaginaIniziale
             }
         }
 
-        
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow home = new MainWindow(); 
-            home.Show(); 
-
+            MainWindow home = new MainWindow();
+            home.Show();
             this.Close();
         }
 
         private void Ricomincia_Click(object sender, RoutedEventArgs e)
         {
-            secondi = 0; 
-            lblTimer.Content = "Tempo: 0 s"; 
-            timer.Stop();  
+            secondi = 0;
+            lblTimer.Content = "Tempo: 0 s";
+            timer.Stop();
             InizializzaGioco();
         }
+
         private void InizializzaTimer()
         {
             timer = new DispatcherTimer();
@@ -97,7 +97,7 @@ namespace PaginaIniziale
             return new Image
             {
                 Source = new BitmapImage(new Uri($"Immagini_memory/{nome}", UriKind.Relative)),
-                Stretch = System.Windows.Media.Stretch.Uniform
+                Stretch = Stretch.Uniform
             };
         }
 
@@ -131,10 +131,19 @@ namespace PaginaIniziale
                 if (coppieTrovate == 8)
                 {
                     timer.Stop();
-                    MessageBox.Show($"Hai vinto in {secondi} secondi!");
-                    
+
+                    if (secondi < bestTime)
+                    {
+                        bestTime = secondi;
+                        File.WriteAllText(pathBestTime, bestTime.ToString());
+                        lblBest.Content = $"Record: {bestTime} s";
+                        MessageBox.Show($"Nuovo record! {secondi} secondi!");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Hai vinto in {secondi} secondi!\nRecord attuale: {bestTime} secondi");
+                    }
                 }
-                    
             }
             else
             {
@@ -156,6 +165,22 @@ namespace PaginaIniziale
             timer.Stop();
             timer.Start();
             InizializzaGioco();
+        }
+
+        private void CaricaBestTime()
+        {
+            if (File.Exists(pathBestTime))
+            {
+                string contenuto = File.ReadAllText(pathBestTime);
+                if (int.TryParse(contenuto, out int tempo))
+                {
+                    bestTime = tempo;
+                }
+            }
+
+            lblBest.Content = bestTime == int.MaxValue
+                ? "Record: -"
+                : $"Record: {bestTime} s";
         }
     }
 }
