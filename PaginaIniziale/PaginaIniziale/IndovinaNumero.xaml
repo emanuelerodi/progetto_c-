@@ -7,30 +7,34 @@
         mc:Ignorable="d"
         Title="IndovinaNumero" Height="450" Width="800">
     <Grid>
-        <Button Content="HOME" HorizontalAlignment="Left" Margin="631,73,0,0" VerticalAlignment="Top" Height="47" Width="106" Click="Button_Click"/>
+        <Button Content="HOME" HorizontalAlignment="Left" Margin="520,138,0,0"
+VerticalAlignment="Top" Height="38" Width="108" Click="Button_Click"/>
 
         <TextBox x:Name="InputNumero"
-                 HorizontalAlignment="Left" Margin="261,120,0,0"
+                 HorizontalAlignment="Left" Margin="76,217,0,0"
                  TextWrapping="Wrap" VerticalAlignment="Top"
-                 Width="122" Height="27"/>
+                 Width="135" Height="36" FontSize="15"/>
 
         <Button x:Name="BtnConferma"
                 Content="CONFERMA"
-                HorizontalAlignment="Left" Margin="432,114,0,0"
-                VerticalAlignment="Top" Height="33" Width="99"
-                Click="BtnConferma_Click"/>
+                HorizontalAlignment="Left" Margin="263,209,0,0"
+                VerticalAlignment="Top" Height="52" Width="137"
+                Click="BtnConferma_Click" FontSize="15"/>
 
         <TextBlock x:Name="TxtMessaggi"
-                   HorizontalAlignment="Left" Margin="261,182,0,0"
+                   HorizontalAlignment="Left" Margin="115,289,0,0"
                    TextWrapping="Wrap" VerticalAlignment="Top"
                    Height="60" Width="270"
-                   Text=""/>
+                   Text="" FontSize="17"/>
 
         <Button x:Name="BtnRicomincia"
                 Content="RICOMINCIA"
-                HorizontalAlignment="Left" Margin="436,249,0,0"
-                VerticalAlignment="Top" Height="39" Width="107"
+                HorizontalAlignment="Left" Margin="520,0,0,0"
+                VerticalAlignment="Center" Height="39" Width="108"
                 Click="BtnRicomincia_Click"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="221,10,0,0" VerticalAlignment="Top" Height="36" Width="281"/>
+        <Label Content="INDOVINA IL NUMERO" HorizontalAlignment="Left" Margin="76,47,0,0" VerticalAlignment="Top" Height="73" Width="376" FontSize="35"/>
+        <Label Content="Ho pensato ad un numero tra 1 e 100" HorizontalAlignment="Left" Margin="100,120,0,0" VerticalAlignment="Top" Height="35" Width="300" FontSize="17"/>
+        <Label Content="Prova ad indovinare!!" HorizontalAlignment="Left" VerticalAlignment="Top" Width="164" FontSize="17" Margin="168,150,0,0"/>
+        <Label x:Name="lblTentativi" Content="Tentativi:  0" HorizontalAlignment="Left" Margin="514,279,0,0" VerticalAlignment="Top" Height="52" Width="120" FontSize="22"/>
     </Grid>
 </Window>

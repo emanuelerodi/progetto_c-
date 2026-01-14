@@ -31,11 +31,6 @@ namespace PaginaIniziale
             "il numero è troppo basso!" + "\n" + "ritenta e sarai più fortunato"
         };
 
-        private string[] vittoria = new string[]
-        {
-            "Hai indovinato!",
-        };
-
         public IndovinaNumero()
         {
             InitializeComponent();
@@ -61,11 +56,11 @@ namespace PaginaIniziale
             }
 
             tentativi++;
+            lblTentativi.Content = $"Tentativi: {tentativi}";
 
             if (numeroUtente == numeroSegreto)
             {
-                TxtMessaggi.Text = vittoria[rnd.Next(vittoria.Length)] +
-                                   $"\nHai indovinato in {tentativi} tentativi!";
+                TxtMessaggi.Text = $"\nHai indovinato in {tentativi} tentativi!";
                 TxtMessaggi.Foreground = Brushes.Black;
             }
             else if (numeroUtente > numeroSegreto)
@@ -84,6 +79,7 @@ namespace PaginaIniziale
 
         private void BtnRicomincia_Click(object sender, RoutedEventArgs e)
         {
+            lblTentativi.Content = $"Tentativi: 0";
             IniziaNuovaPartita();
         }
 
