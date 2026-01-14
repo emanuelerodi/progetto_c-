@@ -9,6 +9,13 @@
 
   <ItemGroup>
     <None Remove="gioco_talpa.jpg.jpg" />
+    <None Remove="Immagini_impiccato\stato0.png" />
+    <None Remove="Immagini_impiccato\stato1.png" />
+    <None Remove="Immagini_impiccato\stato2.png" />
+    <None Remove="Immagini_impiccato\stato3.png" />
+    <None Remove="Immagini_impiccato\stato4.png" />
+    <None Remove="Immagini_impiccato\stato5.png" />
+    <None Remove="Immagini_impiccato\stato6.png" />
     <None Remove="Immagini_memory\alieno.png" />
     <None Remove="Immagini_memory\astronauta.png" />
     <None Remove="Immagini_memory\carta_coperta.png" />
@@ -18,10 +25,46 @@
     <None Remove="Immagini_memory\satellite.png" />
     <None Remove="Immagini_memory\sole.png" />
     <None Remove="Immagini_memory\terra.png" />
+    <None Remove="Immagini_Talpa\talpa.png" />
+    <None Remove="Immagini_Talpa\vuoto.png" />
     <None Remove="impiccato.jpg.png" />
     <None Remove="indovina_numero.jpg.png" />
     <None Remove="memory.jpg.webp" />
+    <None Remove="parole.txt" />
     <None Remove="tris.jpg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Immagini_impiccato\stato0.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Immagini_impiccato\stato1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Immagini_impiccato\stato2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Immagini_impiccato\stato3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Immagini_impiccato\stato4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Immagini_impiccato\stato5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Immagini_impiccato\stato6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Immagini_Talpa\talpa.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Immagini_Talpa\vuoto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="parole.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

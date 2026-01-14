@@ -11,6 +11,7 @@ namespace PaginaIniziale
         private Button[] bottoni;
         private DispatcherTimer timerGioco;
         private DispatcherTimer timerTalpa;
+
         private int tempo = 30;
         private int punti = 0;
         private Random rnd = new Random();
@@ -26,12 +27,21 @@ namespace PaginaIniziale
             InizializzaTimer();
         }
 
+        // 🔹 CARICAMENTO IMMAGINI CORRETTO (WPF)
         private void CaricaImmagini()
         {
-            imgTalpa = new BitmapImage(new Uri("Immagini_Talpa/talpa.png", UriKind.Relative));
-            imgVuoto = new BitmapImage(new Uri("Immagini_Talpa/vuoto.png", UriKind.Relative));
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+            imgTalpa = new BitmapImage(new Uri(System.IO.Path.Combine(basePath, "Immagini_Talpa", "talpa.png")));
+            imgTalpa.Freeze();
+
+            imgVuoto = new BitmapImage(new Uri(System.IO.Path.Combine(basePath, "Immagini_Talpa", "vuoto.png")));
+            imgVuoto.Freeze();
         }
 
+
+
+        // 🔹 CREAZIONE GRIGLIA
         private void InizializzaGriglia()
         {
             bottoni = new Button[9];
@@ -39,39 +49,55 @@ namespace PaginaIniziale
 
             for (int i = 0; i < 9; i++)
             {
-                Button b = new Button();
-                b.Margin = new Thickness(5);
-                b.Click += ColpisciTalpa;
+                Image img = new Image
+                {
+                    Source = imgVuoto,
+                    Stretch = System.Windows.Media.Stretch.Fill
+                };
 
-                b.Content = new Image { Source = imgVuoto };
-                b.Tag = "vuoto";
+                Button b = new Button
+                {
+                    Margin = new Thickness(5),
+                    Content = img,
+                    Tag = "vuoto"
+                };
+
+                b.Click += ColpisciTalpa;
 
                 bottoni[i] = b;
                 GrigliaTalpe.Children.Add(b);
             }
         }
 
+
+        // 🔹 TIMER
         private void InizializzaTimer()
         {
-            timerGioco = new DispatcherTimer();
-            timerGioco.Interval = TimeSpan.FromSeconds(1);
+            timerGioco = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
             timerGioco.Tick += TimerGioco_Tick;
 
-            timerTalpa = new DispatcherTimer();
-            timerTalpa.Interval = TimeSpan.FromMilliseconds(700);
+            timerTalpa = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromMilliseconds(700)
+            };
             timerTalpa.Tick += TimerTalpa_Tick;
         }
 
+        // 🔹 START GIOCO
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             tempo = 30;
             punti = 0;
-            txtTempo.Text = tempo.ToString();
+
+            txtTempo.Text = tempo.ToString() + "s";
             txtPunti.Text = punti.ToString();
 
             foreach (var b in bottoni)
             {
-                b.Content = new Image { Source = imgVuoto };
+                ((Image)b.Content).Source = imgVuoto;
                 b.Tag = "vuoto";
             }
 
@@ -79,10 +105,11 @@ namespace PaginaIniziale
             timerTalpa.Start();
         }
 
+        // 🔹 TIMER TEMPO
         private void TimerGioco_Tick(object sender, EventArgs e)
         {
             tempo--;
-            txtTempo.Text = tempo.ToString();
+            txtTempo.Text = tempo.ToString() + "s";
 
             if (tempo <= 0)
             {
@@ -91,7 +118,7 @@ namespace PaginaIniziale
 
                 foreach (var b in bottoni)
                 {
-                    b.Content = new Image { Source = imgVuoto };
+                    ((Image)b.Content).Source = imgVuoto;
                     b.Tag = "vuoto";
                 }
 
@@ -99,30 +126,32 @@ namespace PaginaIniziale
             }
         }
 
+        // 🔹 COMPARSA TALPA
         private void TimerTalpa_Tick(object sender, EventArgs e)
         {
             foreach (var b in bottoni)
             {
-                b.Content = new Image { Source = imgVuoto };
+                ((Image)b.Content).Source = imgVuoto;
                 b.Tag = "vuoto";
             }
 
-            int index = rnd.Next(0, 9);
+            int index = rnd.Next(0, bottoni.Length);
 
-            bottoni[index].Content = new Image { Source = imgTalpa };
+            ((Image)bottoni[index].Content).Source = imgTalpa;
             bottoni[index].Tag = "talpa";
         }
 
+        // 🔹 CLICK SULLA TALPA
         private void ColpisciTalpa(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
 
-            if (b.Tag != null && b.Tag.ToString() == "talpa")
+            if (b.Tag?.ToString() == "talpa")
             {
                 punti++;
                 txtPunti.Text = punti.ToString();
 
-                b.Content = new Image { Source = imgVuoto };
+                ((Image)b.Content).Source = imgVuoto;
                 b.Tag = "vuoto";
             }
         }
