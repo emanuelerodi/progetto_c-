@@ -59,7 +59,7 @@
                 Click="Home_Click"
                 Grid.Row="3"/>
 
-        <!-- Titolo con ombra -->
+        <!-- Titolo -->
         <TextBlock Text="COLPISCI LA TALPA"
                    FontSize="32"
                    FontWeight="Bold"
@@ -71,7 +71,7 @@
             </TextBlock.Effect>
         </TextBlock>
 
-        <!-- Tempo e punteggio -->
+        <!-- Tempo, punti, record -->
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
@@ -90,9 +90,15 @@
                        Text="0"
                        FontSize="20"
                        FontWeight="Bold"/>
+
+            <TextBlock Text="  Record: " FontSize="20" Margin="20,0,0,0"/>
+            <TextBlock x:Name="txtRecord"
+                       Text="-"
+                       FontSize="20"
+                       FontWeight="Bold"/>
         </StackPanel>
 
-        <!-- Griglia 3x3 (vuota, pronta per bottoni con immagini) -->
+        <!-- Griglia 3x3 -->
         <UniformGrid x:Name="GrigliaTalpe"
                      Grid.Row="2"
                      Rows="3"

@@ -3,6 +3,7 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media.Imaging;
 using System.Windows.Threading;
+using System.IO;
 
 namespace PaginaIniziale
 {
@@ -19,15 +20,19 @@ namespace PaginaIniziale
         private BitmapImage imgTalpa;
         private BitmapImage imgVuoto;
 
+        // ⭐ RECORD
+        private string pathBestScore = "best_score_talpa.txt";
+        private int bestScore = 0;
+
         public Talpa()
         {
             InitializeComponent();
             CaricaImmagini();
             InizializzaGriglia();
             InizializzaTimer();
+            CaricaRecord();
         }
 
-        // 🔹 CARICAMENTO IMMAGINI CORRETTO (WPF)
         private void CaricaImmagini()
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
@@ -39,9 +44,6 @@ namespace PaginaIniziale
             imgVuoto.Freeze();
         }
 
-
-
-        // 🔹 CREAZIONE GRIGLIA
         private void InizializzaGriglia()
         {
             bottoni = new Button[9];
@@ -69,8 +71,6 @@ namespace PaginaIniziale
             }
         }
 
-
-        // 🔹 TIMER
         private void InizializzaTimer()
         {
             timerGioco = new DispatcherTimer
@@ -86,13 +86,12 @@ namespace PaginaIniziale
             timerTalpa.Tick += TimerTalpa_Tick;
         }
 
-        // 🔹 START GIOCO
         private void Start_Click(object sender, RoutedEventArgs e)
         {
             tempo = 30;
             punti = 0;
 
-            txtTempo.Text = tempo.ToString() + "s";
+            txtTempo.Text = tempo + "s";
             txtPunti.Text = punti.ToString();
 
             foreach (var b in bottoni)
@@ -105,11 +104,10 @@ namespace PaginaIniziale
             timerTalpa.Start();
         }
 
-        // 🔹 TIMER TEMPO
         private void TimerGioco_Tick(object sender, EventArgs e)
         {
             tempo--;
-            txtTempo.Text = tempo.ToString() + "s";
+            txtTempo.Text = tempo + "s";
 
             if (tempo <= 0)
             {
@@ -122,11 +120,21 @@ namespace PaginaIniziale
                     b.Tag = "vuoto";
                 }
 
-                MessageBox.Show($"Tempo scaduto! Hai fatto {punti} punti.");
+                // ⭐ CONTROLLO RECORD
+                if (punti > bestScore)
+                {
+                    bestScore = punti;
+                    File.WriteAllText(pathBestScore, bestScore.ToString());
+                    txtRecord.Text = bestScore.ToString();
+                    MessageBox.Show($"Tempo scaduto! Hai fatto {punti} punti.\nNuovo record!");
+                }
+                else
+                {
+                    MessageBox.Show($"Tempo scaduto! Hai fatto {punti} punti.\nRecord attuale: {bestScore}");
+                }
             }
         }
 
-        // 🔹 COMPARSA TALPA
         private void TimerTalpa_Tick(object sender, EventArgs e)
         {
             foreach (var b in bottoni)
@@ -141,7 +149,6 @@ namespace PaginaIniziale
             bottoni[index].Tag = "talpa";
         }
 
-        // 🔹 CLICK SULLA TALPA
         private void ColpisciTalpa(object sender, RoutedEventArgs e)
         {
             Button b = sender as Button;
@@ -155,43 +162,51 @@ namespace PaginaIniziale
                 b.Tag = "vuoto";
             }
         }
+
         private void Home_Click(object sender, RoutedEventArgs e)
         {
-            // Ferma i timer del gioco
             timerGioco.Stop();
             timerTalpa.Stop();
 
-            // Torna alla home
             MainWindow home = new MainWindow();
             home.Show();
             this.Close();
         }
 
-
         private void Ricomincia_Click(object sender, RoutedEventArgs e)
         {
-            // Ferma i timer se stanno ancora andando
             timerGioco.Stop();
             timerTalpa.Stop();
 
-            // Reset variabili
             tempo = 30;
             punti = 0;
 
-            txtTempo.Text = tempo.ToString() + "s";
+            txtTempo.Text = tempo + "s";
             txtPunti.Text = punti.ToString();
 
-            // Reset griglia
             foreach (var b in bottoni)
             {
                 ((Image)b.Content).Source = imgVuoto;
                 b.Tag = "vuoto";
             }
 
-            // Riavvia i timer
             timerGioco.Start();
             timerTalpa.Start();
         }
 
+        // ⭐ CARICA RECORD
+        private void CaricaRecord()
+        {
+            if (File.Exists(pathBestScore))
+            {
+                string contenuto = File.ReadAllText(pathBestScore);
+                if (int.TryParse(contenuto, out int score))
+                {
+                    bestScore = score;
+                }
+            }
+
+            txtRecord.Text = bestScore.ToString();
+        }
     }
 }
