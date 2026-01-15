@@ -153,7 +153,7 @@ namespace PaginaIniziale
         {
             Button b = sender as Button;
 
-            if (b.Tag?.ToString() == "talpa")
+            if (b.Tag.ToString() == "talpa")
             {
                 punti++;
                 txtPunti.Text = punti.ToString();
