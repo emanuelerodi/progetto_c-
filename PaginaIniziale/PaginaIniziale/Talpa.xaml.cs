@@ -190,8 +190,7 @@ namespace PaginaIniziale
                 b.Tag = "vuoto";
             }
 
-            timerGioco.Start();
-            timerTalpa.Start();
+            
         }
 
         // ⭐ CARICA RECORD

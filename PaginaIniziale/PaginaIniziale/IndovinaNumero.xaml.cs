@@ -67,6 +67,8 @@ namespace PaginaIniziale
         private void BtnRicomincia_Click(object sender, RoutedEventArgs e)
         {
             lblTentativi.Content = $"Tentativi: 0";
+            TxtMessaggi.Text = "";
+            TxtMessaggi.Foreground = Brushes.Black;
             IniziaNuovaPartita();
         }
 
