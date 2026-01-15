@@ -57,7 +57,7 @@ namespace PaginaIniziale
 
                 Button b = new Button
                 {
-                    Margin = new Thickness(5),
+                    Margin = new Thickness(0),
                     Content = img,
                     Tag = "vuoto"
                 };
@@ -155,5 +155,43 @@ namespace PaginaIniziale
                 b.Tag = "vuoto";
             }
         }
+        private void Home_Click(object sender, RoutedEventArgs e)
+        {
+            // Ferma i timer del gioco
+            timerGioco.Stop();
+            timerTalpa.Stop();
+
+            // Torna alla home
+            MainWindow home = new MainWindow();
+            home.Show();
+            this.Close();
+        }
+
+
+        private void Ricomincia_Click(object sender, RoutedEventArgs e)
+        {
+            // Ferma i timer se stanno ancora andando
+            timerGioco.Stop();
+            timerTalpa.Stop();
+
+            // Reset variabili
+            tempo = 30;
+            punti = 0;
+
+            txtTempo.Text = tempo.ToString() + "s";
+            txtPunti.Text = punti.ToString();
+
+            // Reset griglia
+            foreach (var b in bottoni)
+            {
+                ((Image)b.Content).Source = imgVuoto;
+                b.Tag = "vuoto";
+            }
+
+            // Riavvia i timer
+            timerGioco.Start();
+            timerTalpa.Start();
+        }
+
     }
 }

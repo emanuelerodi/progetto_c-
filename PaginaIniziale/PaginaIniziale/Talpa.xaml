@@ -3,7 +3,45 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Colpisci la Talpa" Height="500" Width="450">
 
-    <Grid Background="#F0F0F0" Margin="20">
+    <Window.Resources>
+
+        <!-- Stile pulsanti moderni -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#4A90E2"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#357ABD"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Margin="20">
+
+        <!-- Sfondo con gradiente -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                <GradientStop Color="#F7F9FB" Offset="0"/>
+                <GradientStop Color="#E3E8EE" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -12,18 +50,33 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Titolo -->
+        <!-- Pulsante HOME -->
+        <Button Content="HOME"
+                Width="80"
+                Height="40"
+                HorizontalAlignment="Left"
+                Margin="0,43,0,0"
+                Click="Home_Click"
+                Grid.Row="3"/>
+
+        <!-- Titolo con ombra -->
         <TextBlock Text="COLPISCI LA TALPA"
-                   FontSize="28"
+                   FontSize="32"
                    FontWeight="Bold"
+                   Foreground="#333"
                    HorizontalAlignment="Center"
-                   Margin="0,0,0,20"/>
+                   Margin="0,0,0,20">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="4" ShadowDepth="2" Opacity="0.4"/>
+            </TextBlock.Effect>
+        </TextBlock>
 
         <!-- Tempo e punteggio -->
         <StackPanel Grid.Row="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center"
-                    Margin="0,0,0,20">
+                    Margin="0,0,0,20"
+                    Background="#FFFFFFAA">
 
             <TextBlock Text="Tempo: " FontSize="20"/>
             <TextBlock x:Name="txtTempo"
@@ -39,20 +92,30 @@
                        FontWeight="Bold"/>
         </StackPanel>
 
-        <!-- Griglia 3x3 -->
+        <!-- Griglia 3x3 (vuota, pronta per bottoni con immagini) -->
         <UniformGrid x:Name="GrigliaTalpe"
                      Grid.Row="2"
                      Rows="3"
                      Columns="3"
                      Margin="0,10,0,10"/>
 
-        <!-- Pulsante Start -->
+        <!-- Pulsante INIZIA -->
         <Button Content="INIZIA"
                 Grid.Row="3"
                 Width="150"
                 Height="40"
                 HorizontalAlignment="Center"
-                Margin="0,20,0,0"
+                Margin="0,10,0,28"
                 Click="Start_Click"/>
+
+        <!-- Pulsante RICOMINCIA -->
+        <Button Content="RICOMINCIA"
+                Width="80"
+                Height="40"
+                HorizontalAlignment="Right"
+                Margin="0,43,0,0"
+                Click="Ricomincia_Click"
+                Grid.Row="3"/>
+
     </Grid>
 </Window>
