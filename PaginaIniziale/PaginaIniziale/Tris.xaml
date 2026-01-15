@@ -1,9 +1,55 @@
 ﻿<Window x:Class="PaginaIniziale.Tris"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Tris" Height="450" Width="400">
+        Title="Tris" Height="500" Width="450">
 
-    <Grid Background="#F0F0F0" Margin="20">
+    <Window.Resources>
+
+        <!-- Stile pulsanti colorati con bordi visibili -->
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="#6AA9FF"/>
+            <!-- Azzurro più vivo -->
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#2F5FA8"/>
+            <!-- Bordo blu scuro -->
+            <Setter Property="Padding" Value="5"/>
+            <Setter Property="Cursor" Value="Hand"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="0">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#4A8FFF"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+
+    <Grid Margin="20">
+
+        <!-- Sfondo a gradiente più colorato -->
+        <Grid.Background>
+            <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#F7F9FB" Offset="0"/>
+                <GradientStop Color="#D6E4FF" Offset="0.5"/>
+                <GradientStop Color="#B8D0FF" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -11,12 +57,17 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- Titolo -->
+        <!-- Titolo più colorato -->
         <TextBlock Text="TRIS"
-                   FontSize="32"
+                   FontSize="36"
                    FontWeight="Bold"
+                   Foreground="#2F4F8F"
                    HorizontalAlignment="Center"
-                   Margin="0,0,0,20"/>
+                   Margin="0,0,0,20">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="6" ShadowDepth="2" Opacity="0.5"/>
+            </TextBlock.Effect>
+        </TextBlock>
 
         <!-- Griglia 3x3 -->
         <UniformGrid x:Name="GrigliaTris"
@@ -25,11 +76,34 @@
                      Columns="3"
                      Margin="0,10,0,10"/>
 
-        <!-- Pulsante Ricomincia -->
-        <Button Content="RICOMINCIA"
-                Grid.Row="2"
-                Width="150"
-                Height="40"
-                HorizontalAlignment="Center"/>
+        <!-- Barra pulsanti -->
+        <Grid Grid.Row="2">
+
+            <!-- HOME -->
+            <Button Content="HOME"
+                    Width="80"
+                    Height="40"
+                    HorizontalAlignment="Left"
+                    Margin="0,43,0,0"
+                    Click="Home_Click"/>
+
+            <!-- INIZIA -->
+            <Button Content="INIZIA"
+                    Width="150"
+                    Height="40"
+                    HorizontalAlignment="Center"
+                    Margin="0,10,0,28"
+                    Click="Inizia_Click"/>
+
+            <!-- RICOMINCIA -->
+            <Button Content="RICOMINCIA"
+                    Width="80"
+                    Height="40"
+                    HorizontalAlignment="Right"
+                    Margin="0,43,0,0"
+                    Click="Ricomincia_Click"/>
+
+        </Grid>
+
     </Grid>
 </Window>
