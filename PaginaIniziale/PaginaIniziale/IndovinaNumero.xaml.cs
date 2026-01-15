@@ -20,17 +20,6 @@ namespace PaginaIniziale
         private Random rnd = new Random();
         private int tentativi = 0;
 
-        // Frasi dinamiche
-        private string[] troppoAlto = new string[]
-        {
-            "il numero è troppo alto!" + "\n" + "ritenta e sarai più fortunato"
-        };
-
-        private string[] troppoBasso = new string[]
-        {
-            "il numero è troppo basso!" + "\n" + "ritenta e sarai più fortunato"
-        };
-
         public IndovinaNumero()
         {
             InitializeComponent();
@@ -41,14 +30,12 @@ namespace PaginaIniziale
         {
             numeroSegreto = rnd.Next(1, 101); // Numero tra 1 e 100
             tentativi = 0;
-            TxtMessaggi.Text = "Ho pensato a un numero tra 1 e 100. Prova a indovinare!";
-            TxtMessaggi.Foreground = Brushes.White;
             InputNumero.Clear();
         }
 
         private void BtnConferma_Click(object sender, RoutedEventArgs e)
         {
-            if (!int.TryParse(InputNumero.Text, out int numeroUtente))
+            if (!int.TryParse(InputNumero.Text, out int numeroUtente) || numeroUtente < 1 || numeroUtente > 100)
             {
                 TxtMessaggi.Text = "Inserisci un numero valido!";
                 TxtMessaggi.Foreground = Brushes.OrangeRed;
@@ -65,12 +52,12 @@ namespace PaginaIniziale
             }
             else if (numeroUtente > numeroSegreto)
             {
-                TxtMessaggi.Text = troppoAlto[rnd.Next(troppoAlto.Length)];
+                TxtMessaggi.Text = "il numero è troppo alto!" + "\n" + "ritenta e sarai più fortunato";
                 TxtMessaggi.Foreground = Brushes.Black;
             }
             else
             {
-                TxtMessaggi.Text = troppoBasso[rnd.Next(troppoBasso.Length)];
+                TxtMessaggi.Text = "il numero è troppo basso!" + "\n" + "ritenta e sarai più fortunato";
                 TxtMessaggi.Foreground = Brushes.Black;
             }
 
