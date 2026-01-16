@@ -8,6 +8,7 @@ namespace PaginaIniziale
     {
         private bool turnoX = true;
 
+
         public Tris()
         {
             InitializeComponent();
@@ -58,6 +59,15 @@ namespace PaginaIniziale
                     vincitore = "O";
 
                 MessageBox.Show("Ha vinto " + vincitore);
+
+                
+
+                Disabilita();
+                return;
+            }
+            else if(TuttePiene())
+{
+                MessageBox.Show("Pareggio!");
                 Disabilita();
                 return;
             }
@@ -117,6 +127,17 @@ namespace PaginaIniziale
             turnoX = true;
             CreaGriglia();
         }
+
+        private bool TuttePiene()
+        {
+            foreach (Button b in GrigliaTris.Children)
+            {
+                if (b.Content == null)
+                    return false;
+            }
+            return true;
+        }
+
 
         private void Home_Click(object sender, RoutedEventArgs e)
         {
