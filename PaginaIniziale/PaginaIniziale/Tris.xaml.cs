@@ -12,6 +12,7 @@ namespace PaginaIniziale
         {
             InitializeComponent();
             CreaGriglia();
+            Disabilita();
         }
 
         private void CreaGriglia()
