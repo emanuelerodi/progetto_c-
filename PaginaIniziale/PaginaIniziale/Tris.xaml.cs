@@ -34,14 +34,30 @@ namespace PaginaIniziale
         {
             Button b = sender as Button;
 
-            if (b.Content != null) return;
+            if (b.Content != null)
+                return;
 
-            b.Content = turnoX ? "X" : "O";
-            b.Foreground = turnoX ? Brushes.Red : Brushes.Blue;
+            if (turnoX)
+            {
+                b.Content = "X";
+                b.Foreground = Brushes.Red;
+            }
+            else
+            {
+                b.Content = "O";
+                b.Foreground = Brushes.Blue;
+            }
 
             if (ControllaVittoria())
             {
-                MessageBox.Show($"Ha vinto {(turnoX ? "X" : "O")}");
+                string vincitore;
+
+                if (turnoX)
+                    vincitore = "X";
+                else
+                    vincitore = "O";
+
+                MessageBox.Show("Ha vinto " + vincitore);
                 Disabilita();
                 return;
             }
@@ -49,13 +65,22 @@ namespace PaginaIniziale
             turnoX = !turnoX;
         }
 
+
         private bool ControllaVittoria()
         {
             var c = GrigliaTris.Children;
 
             string[] v = new string[9];
+
             for (int i = 0; i < 9; i++)
-                v[i] = (c[i] as Button).Content?.ToString();
+            {
+                Button btn = c[i] as Button;
+
+                if (btn.Content != null)
+                    v[i] = btn.Content.ToString();
+                else
+                    v[i] = null;
+            }
 
             // righe
             if (v[0] == v[1] && v[1] == v[2] && v[0] != null) return true;
@@ -73,6 +98,7 @@ namespace PaginaIniziale
 
             return false;
         }
+
 
         private void Disabilita()
         {
