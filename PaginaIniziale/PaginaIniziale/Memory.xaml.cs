@@ -182,5 +182,24 @@ namespace PaginaIniziale
                 ? "Record: -"
                 : $"Record: {bestTime} s";
         }
+
+        private void btnStop_Click(object sender, RoutedEventArgs e)
+        {
+            // Metti in pausa
+            timer.Stop();
+            bloccoClick = true;
+
+            MessageBoxResult result = MessageBox.Show(
+                "Gioco in pausa.\nVuoi continuare?",
+                "Pausa",
+                MessageBoxButton.OK,
+                MessageBoxImage.Information
+            );
+            // Riprendi il gioco
+            bloccoClick = false;
+            timer.Start();
+        }
+
+
     }
 }

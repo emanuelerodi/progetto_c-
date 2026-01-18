@@ -12,7 +12,7 @@
     <Grid>
         <Button Content="HOME" HorizontalAlignment="Left" Margin="479,296,0,0" VerticalAlignment="Top" Height="52" Width="125" Click="Home_Click"/>
         <Label Content="MEMORY" Margin="181,11,0,0" VerticalAlignment="Top" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left"/>
-        <UniformGrid x:Name="CardGrid" Rows="4" Columns="4" Margin="76,90,281,20">
+        <UniformGrid x:Name="CardGrid" Rows="4" Columns="4" Margin="76,90,281,20" RenderTransformOrigin="0.503,0.499">
             <Button Content=""/>
             <Button Content=""/>
             <Button Content=""/>
@@ -40,5 +40,6 @@
        VerticalAlignment="Top"
        FontSize="16"
        FontWeight="Bold"/>
+        <Button x:Name="btnStop" Content="stop" HorizontalAlignment="Left" Margin="498,382,0,0" VerticalAlignment="Top" Height="32" Width="88" Click="btnStop_Click"/>
     </Grid>
 </Window>
