@@ -20,6 +20,8 @@ namespace PaginaIniziale
         private BitmapImage imgTalpa;
         private BitmapImage imgVuoto;
 
+        private bool giocoInPausa = false;
+
         // ⭐ RECORD
         private string pathBestScore = "best_score_talpa.txt";
         private int bestScore = 0;
@@ -207,5 +209,29 @@ namespace PaginaIniziale
 
             txtRecord.Text = bestScore.ToString();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (!giocoInPausa)
+            {
+                
+                giocoInPausa = true;
+                timerGioco.Stop();
+                timerTalpa.Stop();
+
+                MessageBox.Show(
+                    "Gioco in pausa.\nPremi OK per continuare.",
+                    "Pausa",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information
+                );
+
+                
+                giocoInPausa = false;
+                timerGioco.Start();
+                timerTalpa.Start();
+            }
+        }
+
     }
 }

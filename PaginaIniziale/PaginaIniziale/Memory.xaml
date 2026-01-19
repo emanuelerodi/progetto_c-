@@ -40,6 +40,6 @@
        VerticalAlignment="Top"
        FontSize="16"
        FontWeight="Bold"/>
-        <Button x:Name="btnStop" Content="stop" HorizontalAlignment="Left" Margin="498,382,0,0" VerticalAlignment="Top" Height="32" Width="88" Click="btnStop_Click"/>
+        <Button x:Name="btnStop" Content="pausa" HorizontalAlignment="Left" Margin="498,382,0,0" VerticalAlignment="Top" Height="32" Width="88" Click="btnStop_Click"/>
     </Grid>
 </Window>
