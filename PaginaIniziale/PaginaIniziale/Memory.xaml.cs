@@ -25,9 +25,9 @@ namespace PaginaIniziale
         private Button primaCarta = null;
         private Button secondaCarta = null;
         private int coppieTrovate = 0;
-        private bool bloccoClick = false;
+        private bool bloccoClick = true;
 
-        private string pathBestTime = "best_time.txt";
+        private string pathBestTime = "File/best_time_memory.txt";
         private int bestTime = int.MaxValue;
 
         public Memory()
@@ -135,7 +135,9 @@ namespace PaginaIniziale
                     if (secondi < bestTime)
                     {
                         bestTime = secondi;
+
                         File.WriteAllText(pathBestTime, bestTime.ToString());
+
                         lblBest.Content = $"Record: {bestTime} s";
                         MessageBox.Show($"Nuovo record! {secondi} secondi!");
                     }
@@ -160,6 +162,7 @@ namespace PaginaIniziale
 
         private void start_Click(object sender, RoutedEventArgs e)
         {
+            bloccoClick = false;
             secondi = 0;
             lblTimer.Content = "Tempo: 0 s";
             timer.Stop();
@@ -169,19 +172,26 @@ namespace PaginaIniziale
 
         private void CaricaBestTime()
         {
-            if (File.Exists(pathBestTime))
+            Directory.CreateDirectory(System.IO.Path.GetDirectoryName(pathBestTime));
+
+            if (!File.Exists(pathBestTime))
             {
-                string contenuto = File.ReadAllText(pathBestTime);
-                if (int.TryParse(contenuto, out int tempo))
-                {
-                    bestTime = tempo;
-                }
+                File.WriteAllText(pathBestTime, ""); // crea file vuoto
+            }
+                
+
+            string contenuto = File.ReadAllText(pathBestTime);
+
+            if (int.TryParse(contenuto, out int tempo))
+            {
+                bestTime = tempo;
             }
 
             lblBest.Content = bestTime == int.MaxValue
                 ? "Record: -"
                 : $"Record: {bestTime} s";
         }
+
 
         private void btnStop_Click(object sender, RoutedEventArgs e)
         {

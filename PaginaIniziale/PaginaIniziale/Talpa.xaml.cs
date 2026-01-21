@@ -23,7 +23,7 @@ namespace PaginaIniziale
         private bool giocoInPausa = false;
 
         // ⭐ RECORD
-        private string pathBestScore = "best_score_talpa.txt";
+        private string pathBestScore = "File/best_score_talpa.txt";
         private int bestScore = 0;
 
         public Talpa()
@@ -125,7 +125,9 @@ namespace PaginaIniziale
                 // ⭐ CONTROLLO RECORD
                 if (punti > bestScore)
                 {
+
                     bestScore = punti;
+
                     File.WriteAllText(pathBestScore, bestScore.ToString());
                     txtRecord.Text = bestScore.ToString();
                     MessageBox.Show($"Tempo scaduto! Hai fatto {punti} punti.\nNuovo record!");
@@ -209,6 +211,7 @@ namespace PaginaIniziale
 
             txtRecord.Text = bestScore.ToString();
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
