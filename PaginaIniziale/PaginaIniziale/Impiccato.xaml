@@ -61,6 +61,20 @@
                 Width="120" Height="45"
                 Click="Ricomincia_Click"/>
 
+        <!-- Titolo del gioco -->
+        <TextBlock Text="IMPICCATO"
+                   FontSize="32"
+                   FontWeight="Bold"
+                   Foreground="#333"
+                   HorizontalAlignment="Center"
+                   Margin="0,50,0,0">
+            <TextBlock.Effect>
+                <DropShadowEffect BlurRadius="4"
+                                  ShadowDepth="2"
+                                  Opacity="0.4"/>
+            </TextBlock.Effect>
+        </TextBlock>
+
         <!-- Immagine dell'impiccato -->
         <Image x:Name="imgImpiccato"
                Width="116"
@@ -76,14 +90,14 @@
                    FontWeight="Bold"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
-                   Margin="0,80,0,0"/>
+                   Margin="0,120,0,0"/>
 
         <!-- Lettere sbagliate -->
         <TextBlock x:Name="txtSbagli"
                    FontSize="20"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
-                   Margin="0,140,0,0"
+                   Margin="0,170,0,0"
                    Text="Sbagliate: "/>
 
         <!-- Griglia lettere A-Z -->
