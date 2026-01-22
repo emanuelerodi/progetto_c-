@@ -96,7 +96,7 @@ namespace PaginaIniziale
             txtTempo.Text = tempo + "s";
             txtPunti.Text = punti.ToString();
 
-            foreach (var b in bottoni)
+            foreach (Button b in bottoni)
             {
                 ((Image)b.Content).Source = imgVuoto;
                 b.Tag = "vuoto";
@@ -116,7 +116,7 @@ namespace PaginaIniziale
                 timerGioco.Stop();
                 timerTalpa.Stop();
 
-                foreach (var b in bottoni)
+                foreach (Button b in bottoni)
                 {
                     ((Image)b.Content).Source = imgVuoto;
                     b.Tag = "vuoto";
@@ -141,7 +141,7 @@ namespace PaginaIniziale
 
         private void TimerTalpa_Tick(object sender, EventArgs e)
         {
-            foreach (var b in bottoni)
+            foreach (Button b in bottoni)
             {
                 ((Image)b.Content).Source = imgVuoto;
                 b.Tag = "vuoto";
@@ -188,7 +188,7 @@ namespace PaginaIniziale
             txtTempo.Text = tempo + "s";
             txtPunti.Text = punti.ToString();
 
-            foreach (var b in bottoni)
+            foreach (Button b in bottoni)
             {
                 ((Image)b.Content).Source = imgVuoto;
                 b.Tag = "vuoto";
