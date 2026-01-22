@@ -73,8 +73,9 @@ namespace PaginaIniziale
 
         private void Ricomincia_Click(object sender, RoutedEventArgs e)
         {
+            bloccoClick = false;
             secondi = 0;
-            lblTimer.Content = "Tempo: 0 s";
+            lblTimer.Text = "Tempo: 0 s";
             timer.Stop();
             InizializzaGioco();
         }
@@ -89,7 +90,7 @@ namespace PaginaIniziale
         private void Timer_Tick(object sender, EventArgs e)
         {
             secondi++;
-            lblTimer.Content = $"Tempo: {secondi} s";
+            lblTimer.Text = $"Tempo: {secondi} s";
         }
 
         private Image CreaImmagine(string nome)
@@ -138,7 +139,7 @@ namespace PaginaIniziale
 
                         File.WriteAllText(pathBestTime, bestTime.ToString());
 
-                        lblBest.Content = $"Record: {bestTime} s";
+                        lblBest.Text = $"Record: {bestTime} s";
                         MessageBox.Show($"Nuovo record! {secondi} secondi!");
                     }
                     else
@@ -164,7 +165,7 @@ namespace PaginaIniziale
         {
             bloccoClick = false;
             secondi = 0;
-            lblTimer.Content = "Tempo: 0 s";
+            lblTimer.Text = "Tempo: 0 s";
             timer.Stop();
             timer.Start();
             InizializzaGioco();
@@ -187,7 +188,7 @@ namespace PaginaIniziale
                 bestTime = tempo;
             }
 
-            lblBest.Content = bestTime == int.MaxValue
+            lblBest.Text = bestTime == int.MaxValue
                 ? "Record: -"
                 : $"Record: {bestTime} s";
         }

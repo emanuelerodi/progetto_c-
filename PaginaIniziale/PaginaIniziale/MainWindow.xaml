@@ -1,147 +1,192 @@
 ﻿<Window x:Class="PaginaIniziale.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PaginaIniziale"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="467" Width="800">
+        Title="GameMix" Height="467" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+
+    <Window.Resources>
+
+        <!-- Stile pulsanti moderni -->
+        <Style x:Key="PulsanteGioca" TargetType="Button">
+            <Setter Property="Background" Value="#3BA7C9"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Height" Value="32"/>
+            <Setter Property="Width" Value="90"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="10">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              Margin="4,2"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Stile globale per i titoli -->
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+        </Style>
+
+    </Window.Resources>
 
     <Grid>
 
-        <!-- SFONDO -->
+        <!-- SFONDO SCURO ELEGANTE -->
         <Grid.Background>
             <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                <GradientStop Color="#2196F3" Offset="0"/>
-                <GradientStop Color="#BBDEFB" Offset="1"/>
+                <GradientStop Color="#1C2A35" Offset="0"/>
+                <GradientStop Color="#243744" Offset="0.5"/>
+                <GradientStop Color="#2F4858" Offset="1"/>
             </LinearGradientBrush>
         </Grid.Background>
 
-
         <!-- TITOLO -->
         <Label Content="GameMix"
-               HorizontalAlignment="Center" 
-               VerticalAlignment="Top" 
-               FontSize="36" 
-               FontWeight="Bold">
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               FontSize="40"
+               FontWeight="Bold"
+               Margin="0,15,0,0">
             <Label.Effect>
-                <DropShadowEffect Color="Black" 
-                                  BlurRadius="8" 
-                                  ShadowDepth="0" 
-                                  Opacity="0.4"/>
+                <DropShadowEffect Color="Black"
+                                  BlurRadius="8"
+                                  ShadowDepth="0"
+                                  Opacity="0.5"/>
             </Label.Effect>
         </Label>
 
         <!-- LABEL GIOCHI -->
         <Label Content="MEMORY"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
                Margin="44,72,0,0"
                FontSize="16"
                FontWeight="Bold"
-               FontFamily="Segoe UI"/>
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"/>
 
         <Label Content="INDOVINA IL NUMERO"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
                Margin="589,72,0,0"
                FontSize="16"
                FontWeight="Bold"
-               FontFamily="Segoe UI"/>
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"/>
 
         <Label Content="COLPISCI LA TALPA"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top"
                Margin="0,72,0,0"
                FontSize="16"
                FontWeight="Bold"
-               FontFamily="Segoe UI"/>
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"/>
 
         <Label Content="IMPICCATO"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
                Margin="196,232,0,0"
                FontSize="16"
                FontWeight="Bold"
-               FontFamily="Segoe UI"/>
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"/>
 
         <Label Content="TRIS"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
                Margin="536,232,0,0"
                FontSize="16"
                FontWeight="Bold"
-               FontFamily="Segoe UI"/>
-
-        <!-- IMMAGINI -->
-        <Image Source="/memory.jpg.webp"
                HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               Margin="36,108,0,0"
-               Width="100"
-               Height="100"/>
+               VerticalAlignment="Top"/>
 
-        <Image Source="/impiccato.jpg.png"
-               HorizontalAlignment="Left"
-               Margin="192,268,0,0"
-               Width="100" Height="100" VerticalAlignment="Top"/>
+        <!-- IMMAGINI (incorniciate) -->
+        <Border Margin="36,108,0,0"
+                Width="100" Height="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                CornerRadius="12"
+                Background="#1AFFFFFF">
+            <Image Source="/memory.jpg.webp" Stretch="UniformToFill"/>
+        </Border>
 
-        <Image Source="/gioco_talpa.jpg.jpg"
-               HorizontalAlignment="Center"
-               VerticalAlignment="Top"
-               Margin="0,108,0,0"
-               Width="148"
-               Height="95"/>
+        <Border Margin="192,268,0,0"
+                Width="100" Height="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                CornerRadius="12"
+                Background="#1AFFFFFF">
+            <Image Source="/impiccato.jpg.png" Stretch="UniformToFill"/>
+        </Border>
 
-        <Image Source="/tris.jpg.jpg"
-               HorizontalAlignment="Left"
-               Margin="508,268,0,0"
-               Width="100" Height="100" VerticalAlignment="Top"/>
+        <Border Margin="0,108,0,0"
+                Width="148" Height="95"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                CornerRadius="12"
+                Background="#1AFFFFFF">
+            <Image Source="/gioco_talpa.jpg.jpg" Stretch="UniformToFill"/>
+        </Border>
 
-        <Image Source="/indovina_numero.jpg.png"
-               HorizontalAlignment="Left"
-               VerticalAlignment="Top"
-               Margin="631,108,0,0"
-               Width="100"
-               Height="100"/>
+        <Border Margin="508,268,0,0"
+                Width="100" Height="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                CornerRadius="12"
+                Background="#1AFFFFFF">
+            <Image Source="/tris.jpg.jpg" Stretch="UniformToFill"/>
+        </Border>
+
+        <Border Margin="631,108,0,0"
+                Width="100" Height="100"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                CornerRadius="12"
+                Background="#1AFFFFFF">
+            <Image Source="/indovina_numero.jpg.png" Stretch="UniformToFill"/>
+        </Border>
 
         <!-- BOTTONI -->
         <Button x:Name="btnMemory"
                 Content="GIOCA"
+                Style="{StaticResource PulsanteGioca}"
+                Margin="47,216,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="47,216,0,0"
-                Width="78"
-                Height="28"
                 Click="Memory_Click"/>
 
         <Button x:Name="btnNumero"
                 Content="GIOCA"
+                Style="{StaticResource PulsanteGioca}"
+                Margin="642,213,0,0"
                 HorizontalAlignment="Left"
                 VerticalAlignment="Top"
-                Margin="642,213,0,0"
-                Width="78"
-                Height="28" Click="btnNumero_Click"/>
+                Click="btnNumero_Click"/>
 
         <Button x:Name="btnTris"
                 Content="GIOCA"
-                HorizontalAlignment="Left"
+                Style="{StaticResource PulsanteGioca}"
                 Margin="519,377,0,0"
-                Width="78" Height="28" VerticalAlignment="Top" Click="btnTris_Click"/>
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="btnTris_Click"/>
 
         <Button x:Name="btnTalpa"
                 Content="GIOCA"
+                Style="{StaticResource PulsanteGioca}"
+                Margin="0,207,0,0"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Top"
-                Margin="0,207,0,0"
-                Width="78"
-                Height="28" Click="btnTalpa_Click"/>
+                Click="btnTalpa_Click"/>
 
         <Button x:Name="btnImpiccato"
                 Content="GIOCA"
-                HorizontalAlignment="Left"
+                Style="{StaticResource PulsanteGioca}"
                 Margin="203,377,0,0"
-                Width="78" Height="28" VerticalAlignment="Top" Click="btnImpiccato_Click"/>
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="btnImpiccato_Click"/>
 
     </Grid>
 </Window>

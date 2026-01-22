@@ -1,11 +1,17 @@
 ﻿<Window x:Class="PaginaIniziale.Impiccato"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Impiccato" Height="450" Width="800">
+        Title="Impiccato" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#1E1E2F" Offset="0"/>
+            <GradientStop Color="#2A2A4A" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
 
     <Window.Resources>
-
-        <!-- Stile moderno per i pulsanti -->
         <Style x:Key="PulsanteModerno" TargetType="Button">
             <Setter Property="Background" Value="#4A90E2"/>
             <Setter Property="Foreground" Value="White"/>
@@ -17,7 +23,6 @@
             <Setter Property="Margin" Value="5"/>
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
-
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
@@ -30,7 +35,6 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-
             <Style.Triggers>
                 <Trigger Property="IsMouseOver" Value="True">
                     <Setter Property="Background" Value="#6AB0FF"/>
@@ -40,72 +44,76 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
-
     </Window.Resources>
 
     <Grid Margin="20">
 
-        <!-- Pulsante Home -->
-        <Button Content="HOME"
-                Style="{StaticResource PulsanteModerno}"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                Width="120" Height="45"
-                Click="Home_Click"/>
+        <!-- Pulsanti in alto -->
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" LastChildFill="False">
+            <Button Content="HOME"
+                    Style="{StaticResource PulsanteModerno}"
+                    Width="120" Height="45"
+                    Click="Home_Click"
+                    DockPanel.Dock="Left"/>
+            <Button Content="RICOMINCIA"
+                    Style="{StaticResource PulsanteModerno}"
+                    Width="120" Height="45"
+                    Click="Ricomincia_Click"
+                    DockPanel.Dock="Right"/>
+        </DockPanel>
 
-        <!-- Pulsante Ricomincia -->
-        <Button Content="RICOMINCIA"
-                Style="{StaticResource PulsanteModerno}"
-                HorizontalAlignment="Right"
-                VerticalAlignment="Top"
-                Width="120" Height="45"
-                Click="Ricomincia_Click"/>
-
-        <!-- Titolo del gioco -->
+        <!-- Titolo -->
         <TextBlock Text="IMPICCATO"
-                   FontSize="32"
+                   FontSize="36"
                    FontWeight="Bold"
-                   Foreground="#333"
+                   Foreground="White"
                    HorizontalAlignment="Center"
-                   Margin="0,50,0,0">
+                   Margin="0,60,0,0">
             <TextBlock.Effect>
-                <DropShadowEffect BlurRadius="4"
+                <DropShadowEffect BlurRadius="5"
                                   ShadowDepth="2"
-                                  Opacity="0.4"/>
+                                  Opacity="0.5"/>
             </TextBlock.Effect>
         </TextBlock>
 
-        <!-- Immagine dell'impiccato -->
+        <!-- Immagine -->
         <Image x:Name="imgImpiccato"
-               Width="116"
-               Height="101"
+               Width="120"
+               Height="120"
                HorizontalAlignment="Left"
                VerticalAlignment="Top"
-               Margin="60,153,0,0"
+               Margin="60,150,0,0"
                Source="Immagini_impiccato/stato0.png"/>
 
-        <!-- Parola da indovinare -->
+        <!-- Parola -->
         <TextBlock x:Name="txtParola"
                    FontSize="36"
                    FontWeight="Bold"
+                   Foreground="White"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
-                   Margin="0,120,0,0"/>
+                   Margin="0,130,0,0"/>
 
         <!-- Lettere sbagliate -->
         <TextBlock x:Name="txtSbagli"
                    FontSize="20"
+                   Foreground="White"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
-                   Margin="0,170,0,0"
+                   Margin="0,180,0,0"
                    Text="Sbagliate: "/>
 
-        <!-- Griglia lettere A-Z -->
-        <UniformGrid x:Name="GrigliaLettere"
-                     Rows="3"
-                     Columns="9"
-                     HorizontalAlignment="Center"
-                     VerticalAlignment="Bottom"
-                     Margin="0,0,0,20"/>
+        <!-- Griglia lettere -->
+        <Border Background="#1AFFFFFF"
+                CornerRadius="12"
+                Padding="10"
+                Margin="0,0,0,20"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom">
+            <UniformGrid x:Name="GrigliaLettere"
+                         Rows="3"
+                         Columns="9"/>
+        </Border>
+
     </Grid>
 </Window>

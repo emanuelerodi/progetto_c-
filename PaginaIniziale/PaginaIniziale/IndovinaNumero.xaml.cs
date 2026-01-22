@@ -43,22 +43,22 @@ namespace PaginaIniziale
             }
 
             tentativi++;
-            lblTentativi.Content = $"Tentativi: {tentativi}";
+            lblTentativi.Text = $"Tentativi: {tentativi}";
 
             if (numeroUtente == numeroSegreto)
             {
                 TxtMessaggi.Text = $"\nHai indovinato in {tentativi} tentativi!";
-                TxtMessaggi.Foreground = Brushes.Black;
+                TxtMessaggi.Foreground = Brushes.White;
             }
             else if (numeroUtente > numeroSegreto)
             {
                 TxtMessaggi.Text = "il numero è troppo alto!" + "\n" + "ritenta e sarai più fortunato";
-                TxtMessaggi.Foreground = Brushes.Black;
+                TxtMessaggi.Foreground = Brushes.White;
             }
             else
             {
                 TxtMessaggi.Text = "il numero è troppo basso!" + "\n" + "ritenta e sarai più fortunato";
-                TxtMessaggi.Foreground = Brushes.Black;
+                TxtMessaggi.Foreground = Brushes.White;
             }
 
             InputNumero.Clear();
@@ -66,7 +66,7 @@ namespace PaginaIniziale
 
         private void BtnRicomincia_Click(object sender, RoutedEventArgs e)
         {
-            lblTentativi.Content = $"Tentativi: 0";
+            lblTentativi.Text = $"Tentativi: 0";
             TxtMessaggi.Text = "";
             TxtMessaggi.Foreground = Brushes.Black;
             IniziaNuovaPartita();
